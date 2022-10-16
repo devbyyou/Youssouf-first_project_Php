@@ -1,12 +1,7 @@
 <?php
 // session_start();
 session_start();
-
-
-
 $db = new PDO('mysql:host=db:3306;dbname=formation_members;charset=utf8','root', 'password');
-
-
 if(isset($_SESSION['connect'])){
 	header('location: index.php');
 	exit();
@@ -33,24 +28,24 @@ if(!empty($_POST['email']) && !empty($_POST['password'])){
 	while($user = $req->fetch()){
 
 		if($password == $user['password']){
-			$error = 0;
+			// $error = 0;
 			$_SESSION['connect'] = 1;
 			$_SESSION['pseudo']	 = $user['pseudo'];
 
 			if(isset($_POST['connect'])) {
-				setcookie('log', $user['secret'], time() + 365*24*3600, '/', null, false, true);
+				// setcookie('log', $user['secret'], time() + 365*24*3600, '/', null, false, true);
 			}
 
-			header('location: connection.php?success=1');
+			// header('location: connection.php?success=1');
 			exit();
 		}
 
 	}
 
-	if($error == 1){
-		header('location: connection.php?error=1');
-		exit();
-	}
+	// if($error == 1){
+	// 	header('location: connection.php?error=1');
+	// 	exit();
+	// }
 
 }
 
